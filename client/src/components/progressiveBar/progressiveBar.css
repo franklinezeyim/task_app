@@ -1,0 +1,48 @@
+.progress-container {
+    --progress-start: #7b2ff7; /* purple */
+    --progress-end: #2af598;   /* green-cyan */
+    position: sticky;
+    top: 90px;
+    left: 0;
+    width: 80%;
+    height: 6px;
+    background-color: #e6e6e8;
+    z-index: 1;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  /* Gradient with glow for a modern look */
+  background: linear-gradient(90deg, var(--progress-start), var(--progress-end));
+  box-shadow: 0 0 10px rgba(123, 47, 247, 0.12);
+  border-radius: 999px;
+  position: relative;
+  transition: width 240ms cubic-bezier(.22,.9,.32,1);
+}
+
+/* Subtle moving shimmer overlay */
+.progress-bar::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.12), rgba(255,255,255,0));
+  transform: skewX(-20deg);
+  animation: progress-shimmer 1.6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes progress-shimmer{
+  0% { left: -120%; }
+  100% { left: 120%; }
+}
+
+/* Make it smaller on narrow screens */
+@media (max-width: 600px){
+  .progress-container{ height: 4px; }
+}
+

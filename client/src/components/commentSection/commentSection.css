@@ -1,0 +1,113 @@
+/* Comment section inspired by LinkedIn styling */
+.cs-root{
+	width: 100%;
+	max-width: 800px;
+	margin: 20px auto;
+	background: #fff;
+	border: 1px solid #e6e6e6;
+	/* border-radius: 8px; */
+	padding: 16px;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+.cs-new{
+	display:flex;
+	gap:12px;
+	align-items:flex-start;
+	margin-bottom: 12px;
+}
+
+.cs-avatar{
+	width:40px;
+	height:40px;
+	border-radius:50%;
+	background:#cfcfe6;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	font-weight:600;
+	color:#2b2b2b;
+}
+
+.cs-avatar.small{ width:32px; height:32px; font-size:0.85rem }
+
+.cs-right-tools{
+    display: flex;
+    justify-content: end;
+}
+
+.cs-left-tools{
+    display: flex;
+    gap: 5px;
+}
+
+.cs-tool.cs-photo{
+    cursor: pointer;
+}
+
+.cs-input{ flex:1 }
+.cs-input textarea{ width:100%; min-height:44px; padding:10px; border-radius:6px; border:1px solid #e6e6e6; resize:vertical; font-family:inherit; outline: 0 }
+/* Focus effect */
+.cs-input textarea:focus {
+  border-color: #535bf2;
+  box-shadow: 0 0 6px rgba(83, 91, 242, 0.3);
+  background-color: #ffffff;
+  /* color: #c1c1c1; */
+}
+.cs-actions{ display:flex; justify-content:flex-end; margin-top:8px }
+.cs-btn{ background:#535bf2; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer }
+.cs-btn:disabled{ background:#a1a1a1; cursor:not-allowed }
+
+.cs-list{ display:flex; flex-direction:column; gap:12px }
+.cs-item{ display:flex; gap:12px }
+.cs-left{ flex:0 0 40px }
+.cs-right{ flex:1 }
+.cs-header{ display:flex; gap:8px; align-items:center }
+.cs-author{ font-weight:600; margin-right:6px }
+.cs-time{ color:#616161; font-size:0.85rem }
+.cs-text{ margin:6px 0 8px 0; color:#111; line-height:1.4 }
+.cs-actions-row{ display:flex; gap:12px }
+.cs-action{ background:none; border:none; color:#616161; cursor:pointer; padding:4px 6px; font-size:0.9rem }
+.cs-action.active{ color:#535bf2; font-weight:600 }
+.cs-count{ margin-left:6px; color:#616161; font-size:0.9rem }
+
+.cs-replies{ margin-top:8px; border-left:2px solid #f0f0f0; padding-left:12px; display:flex; flex-direction:column; gap:8px }
+.cs-reply{ display:flex; gap:8px }
+
+.cs-reply-box{ margin-top:8px }
+.cs-reply-box textarea{ width:100%; min-height:40px; padding:8px; border-radius:6px; border:1px solid #e6e6e6; outline: 0 }
+.cs-reply-box textarea:focus{
+  border-color: #535bf2;
+  box-shadow: 0 0 6px rgba(83, 91, 242, 0.3);
+  background-color: #ffffff;
+}
+
+.hideCommentSection{
+    display: none
+}
+
+/* Responsive tweaks */
+@media (max-width:600px){
+	.cs-root{ padding:12px }
+	.cs-header{ flex-direction:row; gap:4px }
+	.cs-author{ font-size:0.95rem }
+}
+
+/* emoji picker */
+.cs-emoji-picker{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top:8px;
+  padding:8px;
+  border-radius:8px;
+  background:#fbfbfb;
+  border:1px solid #eee;
+}
+.cs-emoji-picker.reply{ margin-left:48px }
+.cs-emoji{ background:none; border:none; font-size:18px; cursor:pointer }
+
+/* image preview */
+.cs-img-preview{ display:inline-flex; position:relative; margin-top:8px }
+.cs-img-preview img{ width:72px; height:72px; object-fit:cover; border-radius:6px; border:1px solid #e6e6e6 }
+.cs-remove-img{ position:absolute; top:-6px; right:-6px; background:#e23; color:#fff; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer }

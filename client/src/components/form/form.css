@@ -1,0 +1,95 @@
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.formContent{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    border: 2px solid #646cff;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 2px #ccc;
+}
+
+.formHeader{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #222;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 7px;
+}
+
+.formField{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.formField input{
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    outline: none;
+}
+
+.formContent button{
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #646cff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+}
+
+.formContent button:hover{
+    background-color: #535bf2;
+}
+
+.formFooter{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.formFooter a{
+    color: #646cff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.formError{
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+}
+
+.formSuccess{
+    color: green;
+    font-size: 14px;
+    margin-top: -10px;
+}
+
+@media (max-width: 400px) {
+    .formContent{
+        padding: 20px;
+        border: 1px solid #646cff;
+        box-shadow: 0 1px 3px 1px #ccc;
+    }
+
+    .formField input{
+        width: 100%;
+    }
+}  
+

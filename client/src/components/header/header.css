@@ -1,0 +1,121 @@
+/* Header layout */
+.header{
+  position: sticky;
+  top: 10px;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  padding: 12px 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #e9e9ef;
+  width: 80%;
+  gap: 15%;
+  border-radius: 10px;
+  z-index: 999;
+}
+
+.headerLeft{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Search */
+.search{
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f3f4f8;
+  padding: 6px 8px;
+  border-radius: 20px;
+  box-shadow: none;
+  transition: box-shadow 150ms ease, background 150ms ease;
+}
+
+.search:hover{
+  background: #eef0fb;
+}
+
+.search:focus-within{
+  box-shadow: 0 2px 8px rgba(81, 67, 232, 0.12);
+  background: #ffffff;
+}
+
+.searchIcon{
+  color: #757575;
+  font-size: 18px !important;
+  margin-right: 8px;
+}
+
+.searchInput{
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  width: 220px;
+}
+
+.headerRight{
+    display: flex;
+    gap: 30px;
+}
+
+.headerRightItem{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.headerRightItem .icon{
+    align-self: center;
+    font-size: 1.7rem;
+    color: #555;
+    cursor: pointer;
+}
+
+.headerRightItem p{
+    font-size: 12px;
+    color: #555;
+    text-align: center;
+}
+
+.headerRightItem img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    align-self: center;
+    /* margin-bottom: 10px; */
+    cursor: pointer;
+}
+
+.headerRightItem .hrDropDown{
+  list-style: none;
+  position: absolute;
+  top: 60px;
+  box-shadow: 0 2px 8px rgba(81, 67, 232, 0.12);
+  background: #ffffff;
+  width: 100px;
+  padding: 10px;
+}
+
+.headerRightItem .hrDropDown li{
+  padding: 3px;
+  border: 1px solid #535bf2;
+  border-radius: 5px;
+  color: #535bf2;
+  /* font-size: small; */
+  cursor: pointer;
+}
+
+.headerRightItem .hrDropDown li:last-child{
+  border: 1px solid #f44336;
+  margin-top: 5px;
+}
+
+@media (max-width: 600px){
+  .searchInput{
+    width: 140px;
+    font-size: 13px;
+  }
+}

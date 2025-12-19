@@ -1,0 +1,346 @@
+.box{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.home{
+    display: flex;
+    justify-content: space-around;
+}
+
+.left{
+    flex: 1;
+}
+
+.middle{
+    flex: 2;
+    background-color: white;
+    
+}
+
+.middle .middleContents{
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
+}
+
+.middleHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.middleHeader .middleHeaderContent{
+    display: flex;
+    gap: 15px;
+}
+
+.middleHeader .middleheaderUserImg{
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    object-fit: cover;
+
+}
+
+.middleHeaderContent .middleHeaderTitle h4{}
+.middleHeaderContent .middleHeaderTitle p, .middleHeaderTitle span{
+    color: #56687a;
+    font-size: 14px;
+}
+
+.middleHeader .middleHeaderIcons{
+    display: flex;
+    gap: 5px;
+}
+
+.middleBody{}
+
+.middleBody .middleBodyTxt{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.middleBody .middleBodyTxt .truncate-text{
+    color: #38434f;
+    font-size: 14px;
+}
+
+.middleBody .middleBodyTxt .completed{
+    text-decoration: line-through;
+}
+
+.middleBody .middleBodyTxt .late{
+    color: #DC3545;
+}
+
+.middleBody .middleBodyTxt .mbStatusCom{
+    text-align: end;
+    border: 1px solid #28A745;
+    padding: 3px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #28A745;
+    text-transform: capitalize;
+}
+
+.middleBody .middleBodyTxt .mbStatusPen{
+    text-align: end;
+    border: 1px solid #FFC107;
+    padding: 3px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #FFC107;
+    text-transform: capitalize;
+}
+
+.middleBody .middleBodyTxt .mbStatusLat{
+    text-align: end;
+    border: 1px solid #DC3545;
+    padding: 3px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #DC3545;
+    text-transform: capitalize;
+}
+
+.middleBody .middleBodyImgs{
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.middleBody .middleBodyImgs .middleBodyImg{
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.middleBody .middleBodyReacts{
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 30px 3px 30px;
+}
+
+.middleBodyReacts .mdBodyIcons{
+    display: flex;
+}
+
+.mdBodyIcons span{
+    margin-left: 3px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.handShakeIconBg, .heartIconBg, .likeIconBg{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.handShakeIconBg{
+    background: rgb(205, 175, 5);
+}
+
+.heartIconBg{
+    background: rgba(255, 0, 0, 0.688);
+    margin-left: -7px;
+}
+
+.likeIconBg{
+    background: rgba(8, 31, 179, 0.803);
+    margin-left: -7px;
+}
+
+.middleBodyReacts .mdComments{
+    display: flex;
+    gap: 10px;
+}
+
+.middleBodyReacts .mdComments span{
+    align-self: center;
+    font-size: 13px;
+}
+
+/* Styled horizontal divider for post sections */
+.postDivider{
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.04));
+  margin: 12px 0;
+  border-radius: 1px;
+  width: 90%;
+}
+
+.mdReactAndComment{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 12px;
+}
+
+.mdReactAndComment p{
+    font-size: 13px;
+    font-weight: 600;
+    align-self: center;
+}
+
+.right{
+    flex: 1;
+    padding: 30px;
+    /* background-color: white; */
+    border-radius: 10px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    height: 100%;
+    gap: 50px;
+    margin-right: 30px;
+}
+
+.rContent{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px 0 0 15px;
+}
+
+.rContent .rTitle{
+    color: #293037;
+}
+
+.rContent .rRecomStat{
+    padding-right: 15px;
+    align-self: center;
+    font-size: 12px;
+    color: #293138;
+}
+
+.rBody .rBodyImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.rBody{
+    display: flex;
+    gap: 20px;
+    padding: 10px 0 10px 5px;
+    margin-top: .6rem;
+}
+
+.rBody .rBodyTitle{
+    color: #293138;
+    font-size: 1rem;
+}
+
+.rBody .rBodyPara{
+    font-size: 14px;
+    color: #38434f;
+}
+
+.rBody .rBodyFollowBtn{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #333;
+    outline: none;
+    border-radius: 15px;
+}
+
+.rBody .rBodyFollowBtn:hover{
+    background-color: rgba(0, 0, 0, 0.2); /* Key: Semi-transparent black background */
+    outline: 2px solid #333;
+    transition: 2s;
+}
+
+.removeMD{
+    display: none;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #444;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.left{
+    flex: .5;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    background-color: #ffffff;
+    padding: 30px;
+}
+
+.left .lTop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 10px;
+}
+
+.left .lbCoverImg{
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: -40px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.left .lProfileImg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.left .lUserName{
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 5px;
+}
+
+.left .lUserTile{
+    font-size: 14px;
+    color: #777777;
+}
+
+.left .lUserBio{
+    font-size: 13px;
+    color: #555555;
+    text-align: center;
+    padding: 10px;
+}
+
+.left .lLocation{
+    font-size: 13px;
+    color: #555555;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+}
