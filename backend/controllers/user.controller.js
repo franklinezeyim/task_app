@@ -13,10 +13,12 @@ export const registerUser = async(req, res) => {
             return res.status(400).json({message: "All fields are required!"})
         }
     
-        const existingUser = await User.findOne({email})
+        const existingUserViaEmail = await User.findOne({email})
+        const existingUserViaDisplayName = await User.findOne({displayName})
     
         //No duplicate email
-        if (existingUser) return res.status(409).json({message: "Email already exist!"})
+        if (existingUserViaEmail) return res.status(409).json({message: "Email already exist!"})
+        if (existingUserViaDisplayName) return res.status(409).json({message: "Display Name already Taken!"})
     
         const newHashedPassword = await bcrypt.hash(password, 10)
     
@@ -116,6 +118,19 @@ export const loginUser = async(req, res) => {
     }
 }
 
+// Get User
+export const getUser = async(req, res) => {
+  console.log(req.params.id)
+    const user = await User.findById(req.params.Id)
+    
+    console.log('user from db ', user);
+    
+
+    if (!user) return res.status(404).json({message: "User not found!"})
+
+    res.json(user)
+}
+
 // Logut User
 export const logoutUser = (req, res) => {
     try {
@@ -181,100 +196,6 @@ export const updateUser = async (req, res) => {
   }
 };
 
-// FORGOT PASSWORD
-// export const forgotPassword = async (req, res) => {
-//   const { email } = req.body;
-
-//   try {
-//     const user = await User.findOne({ email });
-
-//     // ✅ Always return success (prevent email enumeration)
-//     if (!user || user.authProvider === "google") {
-//       return res.json({
-//         message: "If the email exists, a reset link has been sent",
-//       });
-//     }
-
-//     const resetToken = crypto.randomBytes(32).toString("hex");
-//     const hashedToken = crypto
-//       .createHash("sha256")
-//       .update(resetToken)
-//       .digest("hex");
-
-//     user.resetPasswordToken = hashedToken;
-//     user.resetPasswordExpires = Date.now() + 15 * 60 * 1000; // 15 min
-//     await user.save();
-
-//     const resetUrl = `${process.env.CLIENT_URL}/reset-password/${resetToken}`;
-
-//     const resetEmailTemplate = (resetUrl, name) => `
-// <!DOCTYPE html>
-// <html>
-// <head>
-//   <meta charset="UTF-8" />
-//   <style>
-//     body {
-//       font-family: Arial, sans-serif;
-//       background: #f4f6f8;
-//       padding: 20px;
-//     }
-//     .card {
-//       max-width: 480px;
-//       background: #ffffff;
-//       padding: 20px;
-//       margin: auto;
-//       border-radius: 8px;
-//     }
-//     .btn {
-//       display: inline-block;
-//       background: #2563eb;
-//       color: #ffffff;
-//       padding: 12px 18px;
-//       text-decoration: none;
-//       border-radius: 6px;
-//       margin-top: 15px;
-//     }
-//     .footer {
-//       font-size: 12px;
-//       color: #888;
-//       margin-top: 20px;
-//     }
-//   </style>
-// </head>
-// <body>
-//   <div class="card">
-//     <h2>Password Reset</h2>
-//     <p>Hello ${name},</p>
-//     <p>You requested to reset your password.</p>
-
-//     <a href="${resetUrl}" class="btn">
-//       Reset Password
-//     </a>
-
-//     <p>This link expires in 15 minutes.</p>
-
-//     <div class="footer">
-//       If you didn’t request this, ignore this email.
-//     </div>
-//   </div>
-// </body>
-// </html>
-// `;
-
-// await sendEmail({
-//   to: user.email,
-//   subject: "Reset your password",
-//   html: resetEmailTemplate(resetUrl, user.firstName),
-// });
-
-
-//     res.json({ message: "If the email exists, a reset link has been sent" });
-//   } catch (err) {
-//     res.status(500).json({ message: "Server error" });
-//   }
-// };
-
-// we;lfffelge,ege;llr;lel
 export const forgotPassword = async (req, res) => {
   const { email } = req.body;
 
@@ -415,3 +336,70 @@ export const resetPassword = async (req, res) => {
 };
 
 
+// Controller for chat
+// controllers/user.controller.js
+
+export const getMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id)
+      .select('-hashedPassword -resetPasswordToken -resetPasswordExpires');
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+
+    res.json({ success: true, data: user });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// Get user by ID
+export const getUserById = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id)
+      .select('displayName userImage jobTitle bio location followersCount followingCount');
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+
+    res.json({ success: true, data: user });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// Get all users (for “start conversation”) Exclude yourself 
+export const getUsers = async (req, res) => {
+  try {
+    const users = await User.find({ _id: { $ne: req.user.id } })
+      .select('displayName userImage jobTitle');
+
+    res.json({ success: true, data: users });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// Search users (🔥 very important for chat)
+export const searchUsers = async (req, res) => {
+  try {
+    const { q } = req.query;
+
+    if (!q) {
+      return res.json({ success: true, data: [] });
+    }
+
+    const users = await User.find({
+      _id: { $ne: req.user.id },
+      displayName: { $regex: q, $options: 'i' }
+    })
+      .limit(10)
+      .select('displayName userImage jobTitle');
+
+    res.json({ success: true, data: users });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};

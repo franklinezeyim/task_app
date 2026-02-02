@@ -5,6 +5,10 @@ import {
   updatePassword,
   uploadAvatar,
   uploadCoverPhoto,
+  deleteAvatar,
+  deleteCoverPhoto,
+  getUserProfile,
+  getMyProfile,
 } from "../controllers/profile.controller.js";
 import multer from "multer";
 
@@ -14,8 +18,12 @@ const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
+// Public route - anyone can view a user's profile (no auth required)
+router.get('/profile/:userId', getUserProfile);
+
 // Protected routes
 router.use(verifyToken);
+router.get('/profile/me', verifyToken, getMyProfile);
 
 // Update basic profile info
 router.patch("/profile/info", updateProfileInfo);
@@ -28,5 +36,8 @@ router.patch("/profile/avatar", upload.single("avatar"), uploadAvatar);
 
 // Upload cover photo
 router.patch("/profile/cover", upload.single("cover"), uploadCoverPhoto);
+//Delete avatar & cover photo
+router.delete('/profile/avatar', deleteAvatar);
+router.delete('/profile/cover-photo', deleteCoverPhoto);
 
 export default router;

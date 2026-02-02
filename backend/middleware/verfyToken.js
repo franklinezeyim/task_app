@@ -11,7 +11,12 @@ export const verifyToken = (req, res, next) => {
         if (err) {
             return res.status(403).json({ message: "Invalid token." });
         }
-        req.userId = payload.userId;
+        // req.userId = payload.userId || payload.id || payload._id
+
+        req.user = {
+      id: payload.userId || payload.id || payload._id,
+    };
+
         next();
     });
 }

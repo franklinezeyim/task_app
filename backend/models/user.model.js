@@ -24,6 +24,68 @@ const userSchema = new mongoose.Schema({
         type: String,
         maxlength: 300
     },
+    location: {
+    type: String,
+    trim: true, 
+      maxlength: 100,
+      default: ''
+    },
+    connections: {
+      type: Number,
+      default: 0
+    },
+    followers: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }],
+    following: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }],
+    followersCount: {
+  type: Number,
+  default: 0
+  },
+  followingCount: {
+    type: Number,
+    default: 0
+  },
+  isOnline:{
+    type: Boolean,
+    default: false
+  },
+  lastSeen: {
+    type: Date
+  },
+  notificationSettings: {
+    email: {
+      type: Boolean,
+      default: true
+    },
+    push: {
+      type: Boolean,
+      default: true
+    },
+    follows: {
+      type: Boolean,
+      default: true
+    },
+    messages: {
+      type: Boolean,
+      default: true
+    },
+    isOnline: {
+      type: Boolean,
+      default: false
+    },
+    lastSeen: {
+      type: Date
+    },
+    tasks: {
+      type: Boolean,
+      default: true
+    }
+    },
     email: {
         type: String,
         required: true,
@@ -67,7 +129,22 @@ const userSchema = new mongoose.Schema({
     type: Date,
     },
 
-},{timestamps: true});
+},{timestamps: true,toJSON: { virtuals: true },
+    toObject: { virtuals: true }});
+
+    // Virtual for follower count
+// userSchema.virtual('followerCount').get(function() {
+//   return this.followers?.length || 0;
+// });
+
+// Virtual for following count
+// userSchema.virtual('followingCount').get(function() {
+//   return this.following?.length || 0;
+// });
+
+// Index for faster queries
+// userSchema.index({ displayName: 1 });
+// userSchema.index({ email: 1 });
 
 const User = mongoose.model("User", userSchema)
 
