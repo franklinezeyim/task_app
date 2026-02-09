@@ -394,3 +394,55 @@ export const DislikeSVG = ({size = 24,
     />
   </svg>
 );
+
+export const ReactIcon = ({ size = 120, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 841.9 595.3" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#61DAFB" stroke-width="40">
+    <ellipse rx="200" ry="80" cx="420.9" cy="296.5"/>
+    <ellipse rx="200" ry="80" cx="420.9" cy="296.5" transform="rotate(60 420.9 296.5)"/>
+    <ellipse rx="200" ry="80" cx="420.9" cy="296.5" transform="rotate(120 420.9 296.5)"/>
+  </g>
+  <circle cx="420.9" cy="296.5" r="45" fill="#61DAFB"/>
+</svg>
+);
+
+export const NodeIcon = ({ size = 120, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 256 288" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M128 0L256 74v140l-128 74L0 214V74z"
+    fill="#539E43"
+  />
+  <text x="128" y="170" text-anchor="middle" font-size="80" fill="white" font-family="Arial, Helvetica, sans-serif">
+    JS
+  </text>
+</svg>
+);
+
+export const MongoDBIcon = ({ size = 120, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 256 549" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M128 0C94 60 60 120 60 200c0 120 68 200 68 200s68-80 68-200C196 120 162 60 128 0z"
+    fill="#4DB33D"
+  />
+  <path
+    d="M128 60v420"
+    stroke="#2F7C31"
+    stroke-width="10"
+  />
+</svg>
+);
+
+export const SocketIcon = ({ size = 24, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="256" cy="256" r="240" fill="black"/>
+  <path
+    d="M160 256h120l-40-40 40 40-40 40"
+    fill="none"
+    stroke="white"
+    stroke-width="20"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="360" cy="256" r="18" fill="white"/>
+</svg>
+);

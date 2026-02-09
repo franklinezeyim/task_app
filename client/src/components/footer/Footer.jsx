@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <div className='footer'>
         <section className="logoSection">
-            <h3>Task App</h3>
+            <h3>TaskFlow App</h3>
             <p>Made with <FavoriteIcon style={{color: "red", fontSize: "16px", marginTop: "4px"}}/> by Franklin</p>
         </section>
         <section className="footerDevImgSection">

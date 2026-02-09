@@ -84,7 +84,7 @@ const Form = () => {
                     <p className="formFooter">Don't have an account? 
                         <Link to="/signup">Sign up</Link>
                     </p>
-                    <div className="divider">
+                    {/* <div className="divider">
                     <span>OR</span>
                     </div>
 
@@ -93,7 +93,7 @@ const Form = () => {
                     onSuccess={handleSuccess}
                     onError={() => showError("Sign in Failed!")}
                     />
-                </div>
+                </div> */}
                 </div>
             </form>
     )

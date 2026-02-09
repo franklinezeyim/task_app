@@ -11,12 +11,13 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import apiRequest from "../../utils/apiRequest";
 import { useNotification } from "../../utils/useNotification";
 import useAuthStore from "../../utils/authStore";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { stringToColor } from "../../utils/stringColor";
 import useTaskUIStore from "../../utils/taskUIStore";
 import MessageButton from "../messages/MessageButton";
 import NotificationBell from "../notifications/NotificationBell";
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import InfoIcon from '@mui/icons-material/Info';
 
 const Header = () => {
   const [query, setQuery] = useState("");
@@ -50,6 +51,20 @@ const Header = () => {
     setQuery("");
     setSearchQuery("");
   };
+
+  const deleteAccount = async () => {
+    if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+      try {
+        const res = await apiRequest.delete("/user/delete-account");
+        showSuccess(res.data.message);
+        logout();
+        navigate("/signup");
+      } catch (error) {
+        console.error(error);
+        showError(error?.response?.data?.message || "Failed to delete account");
+      }
+    }
+  }
 
   
 
@@ -93,12 +108,13 @@ const Header = () => {
             />
           </div>
         </div>
+        <div className="headerMiddle"><Link to="/about" className="homeLink"><InfoIcon className="homeIcon"/> <p style={{fontSize: '12px'}}>About</p></Link></div>
         <div className="headerRight">
           <div className="headerRightItem">
-            <a href="/dashboard" className="dashboardLink">
+            <Link to="/dashboard" className="dashboardLink">
               <DashboardIcon className="icon" />
               <p>Dashboard</p>
-            </a>
+            </Link>
           </div>
           <div  style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
             <MessageButton />
@@ -139,7 +155,7 @@ const Header = () => {
                 <li onClick={handleClick}>
                   <p>Sign out</p>
                 </li>
-                <li className="danger">
+                <li className="danger" onClick={deleteAccount}>
                   <p>Delete Account</p>
                 </li>
               </ul>

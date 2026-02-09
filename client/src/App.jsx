@@ -14,6 +14,7 @@ import DebugTasks from './pages/DebugTask.jsx'
 import Notifications from './pages/notifications/Notifications.jsx'
 import Messages2 from './pages/messages/Messages2.jsx'
 import { SocketProvider } from './utils/SocketProvider.jsx'
+import About from './pages/about/About.jsx'
 
 function App() {
   const { user, hasHydrated } = useAuthStore();
@@ -58,6 +59,7 @@ function App() {
         <Route path="/messages" element={<Messages2 />} />
         <Route path="/messages/:userId" element={<Messages2 />} />
         <Route path="/notifications" element={<Notifications />} />
+        <Route path="/about" element={<About />} />
 
         
       </Routes>

@@ -127,7 +127,7 @@ const SignUpForm = () => {
           Already have an account?
           <Link to='/signin'>Sign in</Link>
         </p>
-      <div className="divider">
+      {/* <div className="divider">
       <span>OR</span>
       </div>
 
@@ -136,7 +136,7 @@ const SignUpForm = () => {
           onSuccess={handleSuccess}
           onError={() => showError("Sign in Failed!")}
         />
-      </div>
+      </div> */}
       </div>
     </form>
   );
