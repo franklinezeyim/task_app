@@ -3,9 +3,14 @@ import { Server } from "socket.io";
 import { setupSocket } from "./socket.js"; // Your existing handler
 
 export const initSocket = (server) => {
+  const allowedOrigins = [
+  'http://localhost:5173',
+  'https://taskflow-xi-seven.vercel.app',
+];
+
   const io = new Server(server, {
     cors: {
-      origin: "https://taskflow-xi-seven.vercel.app/", // Your React app port
+      origin: allowedOrigins,
       methods: ["GET", "POST"],
       credentials: true
     }
